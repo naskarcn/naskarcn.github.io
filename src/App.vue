@@ -1,5 +1,9 @@
 <template>
-  <div id="app" :class="{'theme-light': this.$store.getters.THEMELIGHT, 'theme-dark': !this.$store.getters.THEMELIGHT}">
+  <div id="app" :class="{
+      'theme-light': this.$store.getters.THEMELIGHT, 
+      'theme-dark': !this.$store.getters.THEMELIGHT,
+      'stop-scroll': this.$store.getters.SHOWLOADER
+  }">
     <Header />
     <LoaderSpinner v-if="this.$store.getters.SHOWLOADER"/>
     <TopCardsSection/>
@@ -57,5 +61,10 @@ export default {
     @media (min-width: $medium) {
       height: 100vh;
     }
+  }
+
+  .stop-scroll {
+    height: 100vh;
+    overflow: hidden;
   }
 </style>
